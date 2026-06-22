@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Sakthivel M | Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet"/>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --bg: #0a0a0f;
+    --bg2: #11111a;
+    --bg3: #1a1a28;
+    --accent: #7c6af7;
+    --accent2: #a78bfa;
+    --accent3: #c4b5fd;
+    --text: #f0eeff;
+    --muted: #9490b8;
+    --border: rgba(124,106,247,0.18);
+    --card: #13131f;
+  }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Space Grotesk', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    line-height: 1.7;
+  }
+
+  /* NAV */
+  nav {
+    position: sticky; top: 0; z-index: 100;
+    background: rgba(10,10,15,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 0.9rem 2.5rem;
+  }
+  .logo {
+    font-family: 'Space Mono', monospace;
+    font-size: 1.1rem; font-weight: 700;
+    color: var(--accent2);
+    letter-spacing: 0.04em;
+  }
+  .nav-links { display: flex; gap: 2rem; }
+  .nav-links a {
+    color: var(--muted); text-decoration: none; font-size: 0.9rem;
+    font-weight: 500; transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--accent2); }
+
+  /* HERO */
+  .hero {
+    min-height: 92vh;
+    display: flex; flex-direction: column; justify-content: center; align-items: flex-start;
+    padding: 5rem 2.5rem 4rem;
+    position: relative; overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; top: -120px; right: -120px;
+    width: 520px; height: 520px;
+    background: radial-gradient(circle, rgba(124,106,247,0.13) 0%, transparent 70%);
+    border-radius: 50%; pointer-events: none;
+  }
+  .hero-tag {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.78rem; color: var(--accent);
+    letter-spacing: 0.18em; text-transform: uppercase;
+    margin-bottom: 1.2rem;
+    display: flex; align-items: center; gap: 0.6rem;
+  }
+  .hero-tag::before {
+    content: ''; display: inline-block;
+    width: 28px; height: 1.5px; background: var(--accent);
+  }
+  h1.name {
+    font-size: clamp(2.8rem, 7vw, 5.5rem);
+    font-weight: 700; line-height: 1.05;
+    color: var(--text);
+    letter-spacing: -0.02em;
+    margin-bottom: 0.4rem;
+  }
+  h1.name span { color: var(--accent2); }
+  .hero-role {
+    font-family: 'Space Mono', monospace;
+    font-size: 1rem; color: var(--muted);
+    margin-bottom: 1.6rem;
+    letter-spacing: 0.02em;
+  }
+  .hero-desc {
+    max-width: 540px; font-size: 1.05rem;
+    color: var(--muted); margin-bottom: 2.5rem;
+    line-height: 1.75;
+  }
+  .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; }
+  .btn-primary {
+    background: var(--accent); color: #fff;
+    padding: 0.75rem 1.8rem; border-radius: 8px;
+    font-size: 0.92rem; font-weight: 600;
+    text-decoration: none; transition: background 0.2s, transform 0.15s;
+    border: none; cursor: pointer; display: inline-flex; align-items: center; gap: 0.5rem;
+  }
+  .btn-primary:hover { background: var(--accent2); transform: translateY(-2px); }
+  .btn-outline {
+    border: 1.5px solid var(--border); color: var(--accent2);
+    padding: 0.75rem 1.8rem; border-radius: 8px;
+    font-size: 0.92rem; font-weight: 600;
+    text-decoration: none; transition: border-color 0.2s, background 0.2s, transform 0.15s;
+    background: transparent; cursor: pointer; display: inline-flex; align-items: center; gap: 0.5rem;
+  }
+  .btn-outline:hover { border-color: var(--accent2); background: rgba(124,106,247,0.07); transform: translateY(-2px); }
+
+  /* SECTIONS */
+  section { padding: 5rem 2.5rem; }
+  .section-label {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.72rem; color: var(--accent);
+    letter-spacing: 0.18em; text-transform: uppercase;
+    margin-bottom: 0.7rem;
+    display: flex; align-items: center; gap: 0.6rem;
+  }
+  .section-label::before {
+    content: ''; display: inline-block;
+    width: 20px; height: 1.5px; background: var(--accent);
+  }
+  h2.section-title {
+    font-size: 2rem; font-weight: 700; color: var(--text);
+    margin-bottom: 2.8rem; letter-spacing: -0.01em;
+  }
+
+  /* ABOUT */
+  .about-grid {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 3rem; align-items: center;
+  }
+  .about-text p { color: var(--muted); margin-bottom: 1rem; font-size: 1rem; }
+  .about-info { display: flex; flex-direction: column; gap: 1rem; }
+  .info-card {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 12px; padding: 1.2rem 1.5rem;
+    display: flex; align-items: center; gap: 1rem;
+  }
+  .info-icon {
+    width: 40px; height: 40px; border-radius: 10px;
+    background: rgba(124,106,247,0.13);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.2rem; flex-shrink: 0;
+  }
+  .info-label { font-size: 0.75rem; color: var(--muted); margin-bottom: 0.15rem; letter-spacing: 0.06em; text-transform: uppercase; }
+  .info-value { font-size: 0.97rem; font-weight: 600; color: var(--text); }
+
+  /* SKILLS */
+  .skills-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.2rem; }
+  .skill-card {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 14px; padding: 1.5rem 1.4rem;
+    transition: border-color 0.2s, transform 0.2s;
+    cursor: default;
+  }
+  .skill-card:hover { border-color: var(--accent); transform: translateY(-4px); }
+  .skill-icon { font-size: 2rem; margin-bottom: 0.8rem; }
+  .skill-name { font-size: 1rem; font-weight: 600; color: var(--text); margin-bottom: 0.3rem; }
+  .skill-desc { font-size: 0.83rem; color: var(--muted); line-height: 1.6; }
+  .skill-bar { height: 3px; background: var(--bg3); border-radius: 2px; margin-top: 1rem; overflow: hidden; }
+  .skill-fill { height: 100%; background: linear-gradient(90deg, var(--accent), var(--accent2)); border-radius: 2px; }
+
+  /* EDUCATION */
+  .edu-timeline { display: flex; flex-direction: column; gap: 0; }
+  .edu-item {
+    display: flex; gap: 1.5rem; position: relative;
+    padding-bottom: 2.2rem;
+  }
+  .edu-item:last-child { padding-bottom: 0; }
+  .edu-line {
+    display: flex; flex-direction: column; align-items: center;
+    flex-shrink: 0;
+  }
+  .edu-dot {
+    width: 14px; height: 14px; border-radius: 50%;
+    background: var(--accent); border: 2.5px solid var(--bg);
+    box-shadow: 0 0 0 3px rgba(124,106,247,0.2);
+    flex-shrink: 0;
+  }
+  .edu-connector {
+    width: 1.5px; flex: 1;
+    background: linear-gradient(to bottom, var(--accent), transparent);
+    margin-top: 4px;
+  }
+  .edu-item:last-child .edu-connector { display: none; }
+  .edu-content {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 12px; padding: 1.3rem 1.5rem;
+    flex: 1;
+  }
+  .edu-degree { font-size: 1rem; font-weight: 600; color: var(--text); margin-bottom: 0.25rem; }
+  .edu-place { font-size: 0.87rem; color: var(--accent2); margin-bottom: 0.3rem; font-weight: 500; }
+  .edu-year { font-family: 'Space Mono', monospace; font-size: 0.75rem; color: var(--muted); }
+
+  /* CONTACT */
+  .contact-box {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 20px; padding: 3rem;
+    text-align: center; max-width: 600px; margin: 0 auto;
+    position: relative; overflow: hidden;
+  }
+  .contact-box::before {
+    content: '';
+    position: absolute; top: -60px; left: 50%; transform: translateX(-50%);
+    width: 300px; height: 200px;
+    background: radial-gradient(circle, rgba(124,106,247,0.15) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .contact-box h3 { font-size: 1.7rem; font-weight: 700; margin-bottom: 0.6rem; }
+  .contact-box p { color: var(--muted); margin-bottom: 2rem; }
+  .contact-links { display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; }
+  .contact-link {
+    display: flex; align-items: center; gap: 0.5rem;
+    background: var(--bg2); border: 1px solid var(--border);
+    color: var(--text); text-decoration: none;
+    padding: 0.65rem 1.2rem; border-radius: 9px;
+    font-size: 0.87rem; font-weight: 500;
+    transition: border-color 0.2s, background 0.2s;
+  }
+  .contact-link:hover { border-color: var(--accent2); background: rgba(124,106,247,0.1); color: var(--accent2); }
+  .contact-emoji { font-size: 1rem; }
+
+  /* FOOTER */
+  footer {
+    text-align: center; padding: 2rem;
+    border-top: 1px solid var(--border);
+    font-size: 0.82rem; color: var(--muted);
+    font-family: 'Space Mono', monospace;
+  }
+
+  @media (max-width: 640px) {
+    nav { padding: 0.8rem 1.2rem; }
+    .nav-links { gap: 1.1rem; }
+    .hero { padding: 4rem 1.2rem 3rem; }
+    section { padding: 3.5rem 1.2rem; }
+    .about-grid { grid-template-columns: 1fr; gap: 2rem; }
+    .skills-grid { grid-template-columns: 1fr 1fr; }
+    .contact-box { padding: 2rem 1.2rem; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">&lt;SM /&gt;</div>
+  <div class="nav-links">
+    <a href="#about">About</a>
+    <a href="#skills">Skills</a>
+    <a href="#education">Education</a>
+    <a href="#contact">Contact</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-tag">Portfolio</div>
+  <h1 class="name">Sakthivel <span>M</span></h1>
+  <div class="hero-role">// IT Graduate &amp; Web Developer</div>
+  <p class="hero-desc">
+    A passionate B.Tech Information Technology graduate from Dharmapuri, building clean and functional web experiences with HTML, CSS, and JavaScript.
+  </p>
+  <div class="hero-btns">
+    <a href="#contact" class="btn-primary">Get in touch ↓</a>
+    <a href="#skills" class="btn-outline">View my skills</a>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about" style="background: var(--bg2);">
+  <div class="section-label">Who I am</div>
+  <h2 class="section-title">About me</h2>
+  <div class="about-grid">
+    <div class="about-text">
+      <p>Hi! I'm <strong style="color:var(--accent2)">Sakthivel M</strong>, an Information Technology graduate with a strong foundation in web technologies. I enjoy crafting digital solutions that are both functional and elegant.</p>
+      <p>My journey started with curiosity about how websites work — and evolved into a passion for building them. I'm driven by solving real problems through technology.</p>
+      <p>Currently looking for opportunities to apply my skills and grow as a developer in a dynamic team.</p>
+    </div>
+    <div class="about-info">
+      <div class="info-card">
+        <div class="info-icon">📍</div>
+        <div>
+          <div class="info-label">Location</div>
+          <div class="info-value">Bommidi, Dharmapuri, Tamil Nadu</div>
+        </div>
+      </div>
+      <div class="info-card">
+        <div class="info-icon">🎓</div>
+        <div>
+          <div class="info-label">Degree</div>
+          <div class="info-value">B.Tech — Information Technology</div>
+        </div>
+      </div>
+      <div class="info-card">
+        <div class="info-icon">💼</div>
+        <div>
+          <div class="info-label">Status</div>
+          <div class="info-value">Open to opportunities</div>
+        </div>
+      </div>
+      <div class="info-card">
+        <div class="info-icon">🌐</div>
+        <div>
+          <div class="info-label">Languages</div>
+          <div class="info-value">Tamil, English</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="section-label">What I know</div>
+  <h2 class="section-title">Technical skills</h2>
+  <div class="skills-grid">
+    <div class="skill-card">
+      <div class="skill-icon">🌐</div>
+      <div class="skill-name">HTML5</div>
+      <div class="skill-desc">Semantic markup, accessibility, page structure and web standards.</div>
+      <div class="skill-bar"><div class="skill-fill" style="width:88%"></div></div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-icon">🎨</div>
+      <div class="skill-name">CSS3</div>
+      <div class="skill-desc">Responsive layouts, flexbox, grid, animations and modern styling.</div>
+      <div class="skill-bar"><div class="skill-fill" style="width:82%"></div></div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-icon">⚡</div>
+      <div class="skill-name">JavaScript</div>
+      <div class="skill-desc">DOM manipulation, events, ES6+ features and interactive UIs.</div>
+      <div class="skill-bar"><div class="skill-fill" style="width:75%"></div></div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-icon">📱</div>
+      <div class="skill-name">Responsive Design</div>
+      <div class="skill-desc">Mobile-first approach and cross-device compatible layouts.</div>
+      <div class="skill-bar"><div class="skill-fill" style="width:80%"></div></div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-icon">🔧</div>
+      <div class="skill-name">Problem Solving</div>
+      <div class="skill-desc">Analytical thinking, debugging and logical approach to coding challenges.</div>
+      <div class="skill-bar"><div class="skill-fill" style="width:78%"></div></div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-icon">🤝</div>
+      <div class="skill-name">Team Collaboration</div>
+      <div class="skill-desc">Effective communication and project coordination in team environments.</div>
+      <div class="skill-bar"><div class="skill-fill" style="width:85%"></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section id="education" style="background: var(--bg2);">
+  <div class="section-label">My journey</div>
+  <h2 class="section-title">Education</h2>
+  <div class="edu-timeline">
+    <div class="edu-item">
+      <div class="edu-line"><div class="edu-dot"></div><div class="edu-connector"></div></div>
+      <div class="edu-content">
+        <div class="edu-degree">B.Tech — Information Technology</div>
+        <div class="edu-place">Anna University Affiliated College</div>
+        <div class="edu-year">Graduated</div>
+      </div>
+    </div>
+    <div class="edu-item">
+      <div class="edu-line"><div class="edu-dot"></div><div class="edu-connector"></div></div>
+      <div class="edu-content">
+        <div class="edu-degree">Higher Secondary Certificate (12th)</div>
+        <div class="edu-place">Tamil Nadu State Board</div>
+        <div class="edu-year">Completed</div>
+      </div>
+    </div>
+    <div class="edu-item">
+      <div class="edu-line"><div class="edu-dot"></div><div class="edu-connector"></div></div>
+      <div class="edu-content">
+        <div class="edu-degree">Secondary School Certificate (11th)</div>
+        <div class="edu-place">Tamil Nadu State Board</div>
+        <div class="edu-year">Completed</div>
+      </div>
+    </div>
+    <div class="edu-item">
+      <div class="edu-line"><div class="edu-dot"></div></div>
+      <div class="edu-content">
+        <div class="edu-degree">SSLC — 10th Standard</div>
+        <div class="edu-place">Tamil Nadu State Board, Bommidi, Dharmapuri</div>
+        <div class="edu-year">Completed</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-label">Let's connect</div>
+  <h2 class="section-title">Get in touch</h2>
+  <div class="contact-box">
+    <h3>Ready to collaborate? 🚀</h3>
+    <p>I'm open to internships, fresher jobs, and freelance projects. Feel free to reach out!</p>
+    <div class="contact-links">
+      <a href="mailto:sakthivel@email.com" class="contact-link">
+        <span class="contact-emoji">📧</span> Email me
+      </a>
+      <a href="#" class="contact-link">
+        <span class="contact-emoji">💼</span> LinkedIn
+      </a>
+      <a href="#" class="contact-link">
+        <span class="contact-emoji">🐙</span> GitHub
+      </a>
+      <a href="#" class="contact-link">
+        <span class="contact-emoji">📄</span> Resume
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>Designed &amp; built by <span style="color:var(--accent2)">Sakthivel M</span> · Bommidi, Dharmapuri · 2024</p>
+</footer>
+
+</body>
+</html>
